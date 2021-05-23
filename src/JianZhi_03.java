@@ -81,16 +81,75 @@ public class JianZhi_03 {
 
 
 
-    public void Answer(){
+    public int Answer(int[] nums){
 /*
 * 参考答案思路：
-* n个元素，范围是0~n-1,如果范围是0~n且没有
+* n个元素，范围是0~n-1,如果范围是0~n且没有重复数字（从小到大排序），则数组的下标和所存储的元素大小相同。
+* 算法过程：从i=0开始，a[0]=m,m不等于0;若a[m]=0，则将a[m]和a[0]交换位置，将0放到下标是0的位置。a[m]不等于0等于K，
+* 交换后继续将m与a[k]交换位置，直到a[i]和a[m]相等为止。
 *
+*看答案后启示：
+* 要让数组下标和在这个位置上的元素大小相等，直到出现重复的数字结束。
 *
+* 通过LeetCode
 *
 * */
+        int m=0;
+        int temp;
 
 
+        for (int i=0;i<nums.length;i++){
+            while (nums[i]!=i) {
+                m = nums[i];
+                if (m == i) {
+                    continue;
+                } else if (m == nums[m]) {
+                    break;
+                } else {
+                    temp = m;
+                    nums[i] = nums[m];
+                    nums[m] = temp;
+                }
+            }
 
+        }
+        return m;
+    }
+
+
+    public int AnswerBetter(int[] nums){
+        /*
+         * 参考答案思路：
+         * n个元素，范围是0~n-1,如果范围是0~n且没有重复数字（从小到大排序），则数组的下标和所存储的元素大小相同。
+         * 算法过程：从i=0开始，a[0]=m,m不等于0;若a[m]=0，则将a[m]和a[0]交换位置，将0放到下标是0的位置。a[m]不等于0等于K，
+         * 交换后继续将m与a[k]交换位置，直到a[i]和a[m]相等为止。
+         *
+         *看答案后启示：
+         * 要让数组下标和在这个位置上的元素大小相等，直到出现重复的数字结束。
+         *
+         * 通过LeetCode,一个萝卜一个坑。
+         *
+         * */
+        int temp;
+
+
+        for (int i=0;i<nums.length;i++){
+            while (nums[i]!=i) {
+            if (nums[i] == nums[nums[i]]) {
+                    return nums[i];
+                }
+               temp = nums[i];
+                nums[i]= nums[temp];
+                nums[temp] = temp;
+            }
+        }
+        return -1;
+    }
+
+    @Test
+    public void Test(){
+
+        int[] a = {2,3,1,0,2,5,3};
+        System.out.println(AnswerBetter(a));
     }
 }
