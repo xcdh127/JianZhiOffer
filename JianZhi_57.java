@@ -1,3 +1,7 @@
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * @program: LeetCodeJavaTest
  * @description: 剑指offer第57题
@@ -5,6 +9,13 @@
  * @create: 2021-06-15 15:41
  **/
 public class JianZhi_57 {
+
+    @Test
+    public void test(){
+        int[][]  res1 = new int[5][5];
+        res1[1][1] =1;
+        System.out.println(Arrays.toString(res1));
+    }
 }
 
 
@@ -25,5 +36,9 @@ class Solution1 {
             }
         }
         return res;
+
+
     }
+
+
 }
