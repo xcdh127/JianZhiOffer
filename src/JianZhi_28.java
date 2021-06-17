@@ -1,0 +1,68 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * @program: LeetCodeJavaTest
+ * @description: 剑指offer第28题
+ * @author: Mr.Sun
+ * @create: 2021-06-17 13:25
+ **/
+/*
+* 请实现一个函数，用来判断一棵二叉树是不是对称的。
+* 如果一棵二叉树和它的镜像一样，那么它是对称的。
+*
+* */
+public class JianZhi_28 {
+
+
+
+
+
+}
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+//思路一：先将二叉树变成镜像二叉树，然后和之前的二叉树比较。
+    /*
+    * 问题在于：将二叉树保存的是内存地址，最后指向相同的内存地址所以每个都是 true
+    * */
+
+class Solution001 {
+    public boolean isSymmetric(TreeNode root) {
+        TreeNode res = mirrorTree(root);
+        //2. 判断当前root与保存的root是否相等
+        return res.equals(root);
+    }
+
+
+    public TreeNode mirrorTree(TreeNode root){
+        //1. 先将root保存起来，然后把二叉树整成镜像的
+        if(root == null){
+            return null;
+        }
+        //   1.1保存root节点
+        TreeNode save = root;
+        Queue queue = new LinkedList();
+        queue.offer(root);
+        TreeNode head =null;
+        while(!queue.isEmpty()){
+            head = (TreeNode)queue.poll();
+            if(head.left!=null){
+                queue.offer(head.left);
+            }
+            if(head.right!=null){
+                queue.offer(head.right);
+            }
+            TreeNode temp = head.left;
+            head.left = head.right;
+            head.right = temp;
+        }
+        return root;
+    }
+}
