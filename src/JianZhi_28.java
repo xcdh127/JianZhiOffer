@@ -1,3 +1,5 @@
+import sun.reflect.generics.tree.Tree;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -13,11 +15,6 @@ import java.util.Queue;
 *
 * */
 public class JianZhi_28 {
-
-
-
-
-
 }
 /**
  * Definition for a binary tree node.
@@ -65,4 +62,51 @@ class Solution001 {
         }
         return root;
     }
+
+
 }
+//
+class Solution002{
+//K神题解：
+//    根据观察对称的二叉树，
+//1.他的左孩子的值等于他的右孩子的值
+//2.他的左孩子的左孩子的值等于他的右孩子的右孩子的值 && 他的左孩子的右孩子的值等于她的右孩子的左孩子的值
+public boolean isSymmetric(TreeNode root) {
+    return root==null ? true:recur(root.left,root.right);
+    //2. 判断当前root与保存的root是否相等
+}
+
+
+//    定义一个函数来递归的判断是不是符合以上两个情况
+
+    public boolean recur(TreeNode left, TreeNode right){
+//        如果左孩子和右孩子都为空，返回true
+        if (left==null && right==null) return true;
+//        如果左孩子和右孩子有一个不为空，一个为空，返回false
+        if (left==null || right==null) return false;
+//        如果左孩子和右孩子不相等，返回false
+        if (left.val!=right.val) return false;
+//        如果左孩子的左孩子和右孩子的右孩子不相等 返回false
+        return recur(left.left,right.right) && recur(left.right,right.left);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
