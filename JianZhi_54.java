@@ -100,6 +100,55 @@ public class JianZhi_54 {
 
     }
 
+//    K神题解：  只需要进行一个先右子树，后根节点，最后左子树的递归遍历即可
+//    定义两个成员变量，将结果和 K值定义为成员变量，在递归过程中使用的 K和返回的结果就能共享了
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     *     int val;
+     *     TreeNode left;
+     *     TreeNode right;
+     *     TreeNode(int x) { val = x; }
+     * }
+     */
+    class Solution010 {
+        int k ;//成员变量K，用于计数，输出逆序的第K个数
+        int num;//成员变量 num,用于将第 K个值输出。
+
+        public int kthLargest(TreeNode root, int k) {
+            this.k = k;
+//通过观察发现，二叉树的中序遍历的第K大的数字，就是二叉树中序遍历的逆序的第K个数字，所以可以采用的遍历顺序是：右==>根==>左
+            innerIndexReserve(root);
+            return num;
+
+        }
+        public void innerIndexReserve(TreeNode root){
+            if(root==null){
+                return ;
+            }
+            if(root.right!=null){
+                innerIndexReserve(root.right);
+            }
+            k--;
+            if(k == 0){
+                this.num =  root.val;
+            }
+            if(root.left!=null){
+                innerIndexReserve(root.left);
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
 
 
 
