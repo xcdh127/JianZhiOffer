@@ -97,8 +97,4 @@ public class JianZhi_55II {
             return Math.abs(leftNum-rightNum)<2 ? Math.max(leftNum+1,rightNum+1):-1;
         }
     }
-
-
-
-
 }
