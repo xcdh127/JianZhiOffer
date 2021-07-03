@@ -38,4 +38,27 @@ public class JianZhi_15 {
         System.out.println(solution(5));
     }
 
+
+    /*
+    * 巧用 n-1 ,通过 n 与 n-1 相与运算，可以消去最右边的 1，直到 1全部被消除，即 n值为 0
+    * 例如 5=0101   5-1=4=0100  n = 0101 & 0100 = 4(0100)     n-1 = 3(0011) (0100 & 0011)= 0(0000)其他照此计算
+    *
+    * */
+
+
+    public static int getOne(int num ){
+        int res = 0;
+        while(num !=0 ){
+           num = num & (num-1);
+           res++ ;
+        }
+        return res ;
+    }
+
+    @Test
+    public void test01(){
+        System.out.println(getOne(33));
+
+    }
+
 }
