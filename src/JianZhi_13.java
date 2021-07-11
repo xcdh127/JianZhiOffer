@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @program: LeetCodeJavaTest
  * @description: 剑指offer第13题
@@ -16,7 +19,7 @@ import org.junit.Test;
 * */
 public class JianZhi_13 {
     /*
-    * K神题解：使用深度优先算法搜索可到达的格子，由于机器人每次移动一格，可以通过数位和增量求取当前位置的数位和
+    * K神题解：(DFS) 使用深度优先算法   搜索可到达的格子，由于机器人每次移动一格，可以通过数位和增量求取当前位置的数位和
     *          可达域为直角三角形，所以搜索方法为两个方向，向下或者向右搜索。
     *
     *          不可达域特点：（1）行或者列超出了数组边界
@@ -52,6 +55,54 @@ public class JianZhi_13 {
     @Test
     public void test(){
         System.out.println(movingCounts(2, 3, 1));
+        solution2 solution2 = new solution2();
+        System.out.println(solution2.RunningCounts(2, 3, 1));
+    }
+
+
+
+
+
+}
+class solution2{
+    /*
+     * K神题解： BFS （广度优先） 先将（0,0）放入队列，然后依次放入这个格子下方和右方的格子
+     *          出队列的格子 根据可达 不可达条件放入可行域中
+     *          不可达条件：（1）行或者列索引越界
+     *                      （2）数位和超过了K
+     *                      （3）当前的位置已经搜索过了
+     *     用队列弹出时，放入这个元素 下方和右方的元素
+     * */
+    int m ;
+    int n ;
+    int k ;
+    public int RunningCounts(int m,int n,int k){
+        this.m = m ;
+        this.n = n ;
+        this.k = k ;
+//        辅助当前元素是否已经访问过
+        boolean[][] visited = new boolean[m][n];
+        int[] init = {0,0,0,0};
+        Queue<int[]> queue = new LinkedList<int[]>();
+        queue.add(init);
+        int res = 0;
+        while(!queue.isEmpty()){
+            int[] temp = queue.poll();
+            int i = temp[0];
+            int j = temp[1];
+            int s_i = temp[2];
+            int s_j = temp[3];
+//            当前位置是不可达区域时，直接跳过
+            if (i>=m||j>=n||s_i+s_j>k||visited[i][j])continue;
+            visited[i][j] = true ;
+            res ++ ;
+//                将下方元素以及位数和入队列
+            queue.add(new int[]{i+1,j,((i+1)%10)!=0?s_i+1:s_i-8,s_j});
+//                将右方元素以及位数和入队列
+            queue.add(new int[]{i,j+1,s_i,((j+1)%10)!=0?s_j+1:s_j-8});
+        }
+        return res ;
     }
 
 }
+
