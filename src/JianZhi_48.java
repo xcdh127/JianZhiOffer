@@ -37,7 +37,6 @@ public class JianZhi_48 {
 
 //                更新i的索引
                 i=Math.max(i,map.get(s.charAt(j)));
-                res = Math.max(res,j-i);
             }
 
                 map.put(s.charAt(j),j);
