@@ -1,3 +1,8 @@
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @program: LeetCodeJavaTest
  * @description: 剑指offer第19题
@@ -30,5 +35,10 @@ public class JianZhi_19 {
             }
         }
         return dp[m-1][n-1];
+    }
+
+    @Test
+    public void test(){
+        List<Double> aList = new ArrayList<>();
     }
 }
