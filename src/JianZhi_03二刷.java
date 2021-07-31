@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 /**
  * @program: LeetCodeJavaTest
  * @description: 03
@@ -16,17 +18,23 @@ public class JianZhi_03二刷 {
             if(nums[i]==nums[nums[i]]){
                 return nums[i];
             }
-            exchange(nums[i], nums[nums[i]]);
-            // int temp = nums[i];
-            // nums[i]=nums[temp];
-            // nums[temp]=temp;
+            exchange(i,nums[i],nums);
+//             int temp = nums[i];
+//             nums[i]=nums[temp];
+//             nums[temp]=temp;
         }
         return -1 ;
     }
 
-    public void exchange(int a,int b){
-        int temp = a;
-        a=b;
-        b=temp;
+    public void exchange(int a,int b,int[] nums){
+        int temp = nums[a];
+        nums[a]=nums[b];
+        nums[b]=temp;
     }
+    @Test
+    public void test(){
+        int[] arr = {2, 3, 1, 0, 2, 5, 3};
+        System.out.println(findRepeatNumber(arr));
+    }
+
 }
