@@ -38,6 +38,7 @@ public class JianZhi_05二刷 {
                     sb.append("%20");
                 }else{
                     sb.append(c);
+
                 }
             }
             return sb.toString();
@@ -52,8 +53,14 @@ public class JianZhi_05二刷 {
 //        StringBuilder sb = new StringBuilder();
 //        sb.append("%20");
 //        System.out.println(sb.toString());
-        String s= "45 76 8";
-        System.out.println(replaceSpace(s));
+        String s= "  45 76 8";
+//        sb.replace(0,s.length(),"%20");
+//        String trim = s.trim();
+//        System.out.println(sb);
+
+        String replace = s.replace(" ", "%20");
+        System.out.println(replace);
+
     }
 
 

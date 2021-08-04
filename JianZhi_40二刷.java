@@ -44,5 +44,20 @@ public class JianZhi_40二刷 {
 
     }
 
+
+    @Test
+    public void test(){
+        List<Integer> list =  new ArrayList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        int i =0 ;
+        Integer remove = list.remove(i++);
+        System.out.println(remove);
+        System.out.println(i);
+        
+    }
+
+
     }
 
