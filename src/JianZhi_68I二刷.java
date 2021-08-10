@@ -4,7 +4,7 @@
  * @author: Mr.Sun
  * @create: 2021-08-10 13:53
  **/
-public class JianZhi_68二刷 {
+public class JianZhi_68I二刷 {
     /**
      * Definition for a binary tree node.
      * public class TreeNode {
