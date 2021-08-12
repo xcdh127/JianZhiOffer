@@ -6,7 +6,7 @@ import org.junit.Test;
  * @author: Mr.Sun
  * @create: 2021-08-03 18:55
  **/
-public class JianZhi_58二刷 {
+    public class JianZhi_58二刷 {
 //    "hello world!" --->  "world hello"
     public String reserve(String s){
         StringBuilder sb = new StringBuilder();
@@ -59,4 +59,4 @@ public class JianZhi_58二刷 {
 
 
 
-}
+
